@@ -255,7 +255,7 @@ INSERT INTO avc_testing_ddl.dim_cal_date
     bas.is_weekday,
     bas.is_weekend
   FROM 
-  /* Start date can be changed here)
+  /* Start date can be changed here*/
   (SELECT
           CONVERT(INT, TO_CHAR(DATEADD(day, num.number, '1980-01-01'), 'YYYYMMDD')) AS tk,
           CAST(DATEADD(day, num.number, '1980-01-01') AS DATE)                      AS "date",
