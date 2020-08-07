@@ -1,1 +1,1 @@
-# sxripts
+# scripts
