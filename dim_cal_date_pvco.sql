@@ -113,7 +113,7 @@ INSERT INTO avc_testing_ddl.dim_cal_date
     bas.quarter,
     'Q' + CONVERT(VARCHAR(1), bas.quarter)                            AS quarter_name,
     date_trunc('quarter', bas.date)                                   AS quarter_start_date,
-    dateadd('day', -1, date_trunc('quarter', dateadd('quarter', 1, sysdate))) as quarter_end_date,
+    dateadd('day', -1, date_trunc('quarter', dateadd('quarter', 1, bas.date))) as quarter_end_date,
     bas.half_year,
     'H' + CONVERT(VARCHAR(1), bas.half_year)                          AS half_year_name,
     bas.year,
