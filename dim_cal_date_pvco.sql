@@ -40,6 +40,7 @@ CREATE TABLE avc_testing_ddl.dim_cal_date (
   "half_year"                   INT4,
   "half_year_name"              VARCHAR(2),
   "year"                        INT4,
+  "reporting_year"				int4,
   "year_start_date"             TIMESTAMP NULL,
   "year_end_date"               TIMESTAMP NULL,
   "is_weekday"                  boolean,
@@ -69,6 +70,7 @@ INSERT INTO avc_testing_ddl.dim_cal_date
   , half_year
   , half_year_name
   , "year"
+  , reporting_year
   , year_start_date
   , year_end_date
   , is_weekday
@@ -117,6 +119,7 @@ INSERT INTO avc_testing_ddl.dim_cal_date
     bas.half_year,
     'H' + CONVERT(VARCHAR(1), bas.half_year)                          AS half_year_name,
     bas.year,
+    DATEPART(year, DATEADD(day, 7 - (CONVERT(INT, bas.day_of_week)), bas.date)) as reporting_year,
     date_trunc('year', bas.date)                                      AS year_start_date,
     DATEADD(day, -1, DATEADD(year, +1, date_trunc('year', bas.date))) AS year_end_date,
     bas.is_weekday,
